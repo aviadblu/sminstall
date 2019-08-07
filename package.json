@@ -1,0 +1,36 @@
+{
+  "name": "sminstall",
+  "author": {
+    "name": "Aviad Blumenfeld",
+    "url": "https://github.com/aviadblu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aviadblu/sminstall.git"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/sminstall.js",
+  "bin": {
+    "sminstall": "./bin/sminstall.js"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "smart-install": "node index.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "8.1.0",
+    "tar-pack": "3.4.1",
+    "tmp": "0.1.0"
+  },
+
+  "bundledDependencies": [
+    "fs-extra",
+    "tar-pack",
+    "tmp"
+  ]
+}
