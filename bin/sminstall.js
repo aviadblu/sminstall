@@ -7,9 +7,14 @@ async function Main() {
     if (!CliService.Options.root) {
         CliService.Options.root = "."
     }
+
     let smartInstallSvc = new SmartInstallService(CliService.Options.root);
-    await smartInstallSvc.init();
-    await smartInstallSvc.smartInstall();
+    if (CliService.Options.cacheClean) {
+        await smartInstallSvc.cleanCache();
+    } else {
+        await smartInstallSvc.init();
+        await smartInstallSvc.smartInstall();
+    }
 }
 
 Main();

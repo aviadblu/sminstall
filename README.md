@@ -26,5 +26,5 @@ sminstall [path to root npm folder | empty for .] --dev
 
 # Clean sminstall cache
 ```bash
-sminstall [path to root npm folder | empty for .] --clean
+sminstall --clean
 ```
