@@ -63,5 +63,8 @@ typings/
 # Cache directory
 cache/
 
+# rp directory
+rp/
+
 # webstorm directory
 .idea/
