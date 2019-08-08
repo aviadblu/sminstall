@@ -1,28 +1,19 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const {CliService} = require("../lib/cli.service");
 const {SmartInstallService} = require("../lib/smart-install.service");
 
 async function Main() {
-    let rootPath = null;
-    if (process.argv[2]) {
-        const dirFromArgs = process.argv[2].toString()
-        if(fs.existsSync(dirFromArgs)){
-            rootPath = dirFromArgs;
-        }
-        else {
-            console.log(`Root path is not a folder: '${path.resolve(dirFromArgs)}'`);
-        }
-    } else {
-        rootPath = "."
+    CliService.Parse(process.argv);
+    if (!CliService.Options.root) {
+        CliService.Options.root = "."
     }
 
-    if(rootPath != null) {
-        let smartInstallSvc = new SmartInstallService(rootPath);
+    let smartInstallSvc = new SmartInstallService(CliService.Options.root);
+    if (CliService.Options.cacheClean) {
+        await smartInstallSvc.cleanCache();
+    } else {
         await smartInstallSvc.init();
         await smartInstallSvc.smartInstall();
-    } else {
-        console.log("Exit");
     }
 }
 
