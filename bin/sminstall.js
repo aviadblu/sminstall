@@ -16,10 +16,12 @@ async function Main() {
             await smartInstallSvc.init();
             await smartInstallSvc.smartInstall();
         } catch (e) {
-            console.error(e.toString());
+            console.error("Error", e.toString());
             console.error(e);
+            process.exit(1);
         }
     }
+    process.exit(0);
 }
 
 Main();
