@@ -12,8 +12,13 @@ async function Main() {
     if (CliService.Options.cacheClean) {
         await smartInstallSvc.cleanCache();
     } else {
-        await smartInstallSvc.init();
-        await smartInstallSvc.smartInstall();
+        try {
+            await smartInstallSvc.init();
+            await smartInstallSvc.smartInstall();
+        } catch (e) {
+            console.error(e.toString());
+            console.error(e);
+        }
     }
 }
 
